@@ -1,4 +1,3 @@
-import { arrMeme } from "../meme-array";
 
 import React from "react";
 
@@ -11,7 +10,13 @@ export function Meme(param){
         randomImage: "https://i.imgflip.com/1bij.jpg",
     } 
     )
-    const [allMemeImage] = React.useState(arrMeme)
+    const [allMeme, setAllMeme] = React.useState([])
+
+    React.useEffect(() => {
+        fetch(`https://api.imgflip.com/get_memes`)
+            .then(res => res.json())
+            .then(data => setAllMeme(data.data.memes)) 
+    }, [])
     
     function handleChange(event){
         const {name, value} = event.target
@@ -22,11 +27,10 @@ export function Meme(param){
         
     }
 
-    function clicked(){
+    function clicked(){       
         
-        const memeArray = allMemeImage.data.memes
-        const random = Math.floor(Math.random() * memeArray.length)
-        const url = memeArray[random].url
+        const random = Math.floor(Math.random() * allMeme.length)
+        const url = allMeme[random].url
         setMeme(prev => ({
             ...prev,
             randomImage: url,
@@ -35,6 +39,12 @@ export function Meme(param){
         
         
     }
+
+    
+
+   
+    
+
     return(
         <main>
             <div className="form">
