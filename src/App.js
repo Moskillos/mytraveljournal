@@ -1,20 +1,13 @@
 import {NavBar} from './component/NavBar';
-import {Card} from './component/Card';
+import {Meme} from './component/Meme';
 import './App.css';
-import {arr} from './separate'
 
-function App() {
-  const cards = arr.map(item => 
-    <Card 
-    {...item}
-    />
-  )
+
+function App() {  
   return (
     <div>
     <NavBar />
-    <div className='card-app-container'>
-      {cards}
-    </div>    
+    <Meme />  
     </div>
     
   );

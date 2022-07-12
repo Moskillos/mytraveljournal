@@ -1,8 +1,14 @@
 export function NavBar(){
     return(
     <nav className="nav-bar">
-        <img src="./Fill 213.png" alt=""></img>
-        <h4>my travel journal</h4>
+        <div className="logo">
+            <img src="./Troll Face.png" alt="" width="70px"></img>
+        <h2>Meme Generator</h2>
+        </div>
+        <div className="react-course">
+            <p>React Course - Project 3</p>
+        </div>
+        
     </nav>
     )
 }
